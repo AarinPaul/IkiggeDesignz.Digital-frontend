@@ -85,7 +85,7 @@ const Hero = () => {
       {/* Content */}
       <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-between px-6 lg:px-24">
         {/* Left Text */}
-        <div className="text-white max-w-xl mb-8 md:mb-0">
+        <div className="text-white max-w-xl mb-8 md:mb-0 mt-20 md:mt-0">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
             Interior Designers in{" "}
             <span className="text-yellow-400">Roorkee</span>
@@ -97,7 +97,7 @@ const Hero = () => {
         </div>
 
         {/* Right Form */}
-        <div className="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full md:w-96 relative z-10">
+        <div className="bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full md:w-96 relative z-10 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">
             Get in Touch
           </h2>
