@@ -5,7 +5,6 @@ import CommercialClients from '../components/CommercialClients'
 import HowWeWork from '../components/HowWeWork'
 import OurFactory from '../components/OurFactory'
 import ConnectWithUs from '../components/ConnectWithUs' 
-import FAQ from '../components/FAQ'
 
 export default function Home() {
   return (
@@ -16,7 +15,7 @@ export default function Home() {
       <HowWeWork />
       <OurFactory />
       <ConnectWithUs />
-      <FAQ />
+      
     </>
   )
 }
