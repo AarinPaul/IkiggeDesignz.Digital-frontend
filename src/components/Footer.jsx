@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaPinterest, FaLinkedinIn, FaYoutube, FaXTwit
 
 const Footer = () => {
   const footerLinks = {
-    Company: ['About Us', 'Careers', 'Blog'],
+    Company: ['About Us', 'Careers', 'Blog', 'Career'], // Added Career here
   }
 
   const socialIcons = [
@@ -65,7 +65,7 @@ const Footer = () => {
                     viewport={{ once: true }}
                   >
                     <a
-                      href="#"
+                      href={link === "Career" ? "/career" : "#"} // Career link goes to career page
                       className="text-gray-300 hover:text-white transition-colors duration-300"
                     >
                       {link}
