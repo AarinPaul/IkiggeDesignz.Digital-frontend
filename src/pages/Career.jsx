@@ -40,10 +40,10 @@ const Career = () => {
 
           emailjs
                .send(
-                    "service_3wrxjf5",
-                    "template_ew514i6",
+                    "service_2hwslfh",
+                    "template_m6xxq5i",
                     templateParams,
-                    "XO5OniqX9Lq87Djt8"
+                    "2k-i_9TIaV2I6ao-M"
                )
                .then(
                     () => {

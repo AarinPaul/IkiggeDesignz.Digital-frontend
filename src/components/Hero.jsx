@@ -10,8 +10,6 @@ const Hero = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showPopup, setShowPopup] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -26,56 +24,37 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     const name = e.target.name.value.trim();
     const phone = e.target.phone.value.trim();
 
     if (!name || !phone) {
-      setErrorMsg("⚠️ Please fill out both fields!");
+      alert("⚠️ Please fill out both fields!");
       return;
     }
 
-    setErrorMsg("");
+    const message = ` My name is ${name} 
+      number is ${phone}.`;
+    const whatsappNumber = "7810891102"; // Replace with your WhatsApp number including country code
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
 
-    try {
-      const res = await fetch("http://localhost:5002/send-message", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          email: "N/A",
-          message: "Lead from Hero form",
-        }),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
-        setShowPopup(true);
-        setTimeout(() => setShowPopup(false), 3000);
-        e.target.reset();
-      } else {
-        setErrorMsg("❌ Failed to send message. Try again!");
-      }
-    } catch (err) {
-      console.error(err);
-      setErrorMsg("❌ Something went wrong. Please try again later.");
-    }
+    window.open(whatsappURL, "_blank");
+    e.target.reset();
   };
 
   return (
     <section className="pt-20 relative w-full h-screen overflow-hidden">
       {/* Background with zoom animation */}
       <motion.img
-        key={currentIndex} // restart animation when index changes
+        key={currentIndex}
         src={images[currentIndex]}
         alt="Luxury interior"
         initial={{ scale: 1 }}
-        animate={{ scale: 1.3 }} // zoom a little more
-        transition={{ duration: 7, ease: "easeInOut" }} // slower zoom
+        animate={{ scale: 1.3 }}
+        transition={{ duration: 7, ease: "easeInOut" }}
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
 
@@ -106,27 +85,20 @@ const Hero = () => {
               type="text"
               name="name"
               placeholder="Your Name"
-              className="px-4 py-3 border rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              className="px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-yellow-400 transition"
             />
             <input
               type="tel"
               name="phone"
               placeholder="Phone Number"
-              className="px-4 py-3 border rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition"
+              className="px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-yellow-400 transition"
             />
-
-            {errorMsg && (
-              <p className="text-red-600 text-sm text-center">{errorMsg}</p>
-            )}
-
-            <motion.button
+            <button
               type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-yellow-400 text-black font-semibold py-3 rounded-xl shadow-md hover:bg-yellow-500 transition"
+              className="bg-yellow-400 text-black font-semibold py-3 rounded-xl hover:bg-yellow-500 transition"
             >
               Submit
-            </motion.button>
+            </button>
           </form>
         </div>
       </div>
@@ -150,13 +122,6 @@ const Hero = () => {
           <HiChevronRight size={24} />
         </motion.button>
       </div>
-
-      {/* Thank You Popup */}
-      {showPopup && (
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-lg text-lg font-medium">
-          ✅ Thank you! Your message has been sent.
-        </div>
-      )}
     </section>
   );
 };

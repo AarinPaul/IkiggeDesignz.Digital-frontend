@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaPinterest, FaLinkedinIn, FaYoutube, FaXTwit
 
 const Footer = () => {
   const footerLinks = {
-    Company: ['About Us', 'Careers', 'Blog', 'Career'], // Added Career here
+    Company: ['About Us', 'Blog', 'Careers'], // Added Career here
   }
 
   const socialIcons = [
@@ -79,14 +79,15 @@ const Footer = () => {
           {/* Map Section (Right Side) */}
           <div className="lg:col-span-2 h-[300px] md:h-[400px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55361.57352831029!2d77.85362619283002!3d29.86143749069971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eb36e08b35119%3A0x798f5dc25ebd0a72!2sRoorkee%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1757741727774!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.2178854754216!2d77.64813819999999!3d13.0217924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17b47106f6c9%3A0xd60d43f819d197d7!2sIKIGGE%20DESIGNZ%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1758991188046!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            />
+
           </div>
 
         </div>

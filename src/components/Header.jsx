@@ -12,7 +12,6 @@ const Header = () => {
     { label: 'SERVICES', to: '/services' },
     { label: 'PROJECTS', to: '/projects' },
     { label: 'BLOG', to: '/blog' },
-    { label: 'CONTACT', to: '/contact' },
   ]
 
   const linkBase =
