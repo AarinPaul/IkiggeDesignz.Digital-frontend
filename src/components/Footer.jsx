@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaPinterest, FaLinkedinIn, FaYoutube, FaXTwit
 
 const Footer = () => {
   const footerLinks = {
-    Company: ['About Us', 'Blog', 'Careers'], // Added Career here
+    Company: ['About Us', 'Blog', 'Career'], // Added Career here
   }
 
   const socialIcons = [
