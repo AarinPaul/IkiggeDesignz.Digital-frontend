@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { NavLink, Link } from 'react-router-dom'
+import logo from '../assets/logo.png' // adjust path based on your folder structure
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,12 +29,25 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
+          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold text-gray-800"
+            className="flex items-center"
           >
-            <Link to="/">THE DESIGN HOUSE</Link>
+            <Link to="/" className="flex items-center">
+              <img
+                src={logo} // if imported from src/assets
+                alt="Ikigge Designz Logo"
+                className="h-18 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+              />
+              {/* Optional text beside logo for brand name */}
+              <span className="ml-3 text-xl font-semibold text-gray-800 tracking-wide">
+                IKIGGE DESIGNZ
+              </span>
+            </Link>
           </motion.div>
+
+
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
