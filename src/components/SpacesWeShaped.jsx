@@ -37,7 +37,7 @@ const SpacesWeShaped = () => {
     }
   }
   return (
-    <section className=" min-h-screen pt-15 pb-16 bg-white relative">
+    <section className="pt-12 pb-6 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
