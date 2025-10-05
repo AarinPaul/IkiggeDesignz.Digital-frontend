@@ -14,47 +14,38 @@ const Header = () => {
     { label: 'BLOG', to: '/blog' },
   ];
 
-  const linkBase =
-    'transition-colors duration-300 font-medium text-gray-700  hover:text-amber-800';
-
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#f0f0f0] backdrop-blur-sm "
+      className="fixed top-0 left-0 right-0 z-50 bg-[#f0f0f0] backdrop-blur-sm shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center ml-8">
+          {/* Logo + Text */}
+          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
             <Link to="/" className="flex items-center">
-              {/* Logo image */}
               <img
                 src={logo}
                 alt="Ikigge Designz Logo"
-                className="h-[120px] w-auto object-contain opacity-90 transition-opacity duration-300"
+                className="h-12 sm:h-16 w-auto object-contain opacity-90 transition-opacity duration-300"
               />
-
-              {/* Text: Company Name + Tagline */}
-              <div className="ml-4 flex flex-col justify-center">
-                {/* Company Name */}
-                <span className="text-3xl font-bold tracking-wide brand-text">
+              <div className="ml-2 sm:ml-4 flex flex-col justify-center">
+                <span className="text-xl sm:text-2xl font-bold tracking-wide brand-text">
                   IKIGGE DESIGNZ
                 </span>
-                {/* Tagline */}
-                <span className="text-lg tracking-wide brand-text">
+                <span className="text-sm sm:text-lg tracking-wide brand-text">
                   Creating Beauty in Every Corner
                 </span>
               </div>
             </Link>
           </motion.div>
 
-
           {/* Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-gray-700 hover:text-amber-800 transition-colors duration-300 z-50"
+            className="text-gray-700 hover:text-amber-800 transition-colors duration-300 z-50 md:hidden"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -63,32 +54,45 @@ const Header = () => {
               <i className="fi fi-br-bars-staggered text-2xl" />
             )}
           </button>
-        </div>
 
-        {/* Side Panel Navigation */}
-        <motion.nav
-          initial={{ x: '100%' }}
-          animate={{ x: isMenuOpen ? '0%' : '100%' }}
-          transition={{ type: 'tween' }}
-          className="fixed top-0 right-0 h-screen w-full sm:w-80 bg-[#588c7e] shadow-xl flex flex-col pt-24 z-40 transform"
-        >
-          <div className="flex flex-col space-y-4 px-8">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `text-xl py-3 border-b border-gray-300 last:border-b-0 nav-link ${isActive ? 'active-link' : ''
+                  `text-gray-700 font-medium hover:text-amber-800 transition-colors duration-300 ${isActive ? 'text-amber-800' : ''
                   }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+
+        {/* Mobile Side Panel */}
+        <motion.nav
+          initial={{ x: '100%' }}
+          animate={{ x: isMenuOpen ? '0%' : '100%' }}
+          transition={{ type: 'tween' }}
+          className="fixed top-0 right-0 h-screen w-full sm:w-64 bg-[#588c7e] shadow-xl flex flex-col pt-24 z-40 transform md:hidden"
+        >
+          <div className="flex flex-col space-y-4 px-6">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === '/'}
+                className={({ isActive }) =>
+                  `text-lg py-3 border-b border-gray-300 last:border-b-0 text-white ${isActive ? 'font-bold' : ''}`
                 }
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </NavLink>
-
-
-
             ))}
           </div>
         </motion.nav>
@@ -98,7 +102,7 @@ const Header = () => {
       {isMenuOpen && (
         <div
           onClick={() => setIsMenuOpen(false)}
-          className="fixed inset-0 z-30"
+          className="fixed inset-0 bg-black bg-opacity-30 z-30 md:hidden"
         />
       )}
     </motion.header>
