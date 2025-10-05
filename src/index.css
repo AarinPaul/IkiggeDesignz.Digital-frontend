@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Maragsa&display=swap');
 @import "tailwindcss";
 
 html, body {
@@ -24,4 +25,25 @@ html, body {
   .font-serif {
     font-family: 'Playfair Display', serif;
   }
+  /* for brand text*/
+  .brand-text {
+  font-family: 'Maragsa', serif;
+  color: #588c7e;
+  letter-spacing: 1px;
+}
+.nav-link {
+  font-family: 'Maragsa', serif;
+  color: #1A1A1A;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #9b6b30; /* Golden hover */
+}
+
+.active-link {
+  color: #1A1A1A; /* Keeps same color as normal text */
+}
+
+
 }
