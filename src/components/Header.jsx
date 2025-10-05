@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { HiMenu, HiX } from 'react-icons/hi'
-import { NavLink, Link } from 'react-router-dom'
-import logo from '../assets/logo.png' // adjust path based on your folder structure
-
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { NavLink, Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { label: 'HOME', to: '/' },
@@ -14,10 +12,10 @@ const Header = () => {
     { label: 'SERVICES', to: '/services' },
     { label: 'PROJECTS', to: '/projects' },
     { label: 'BLOG', to: '/blog' },
-  ]
+  ];
 
   const linkBase =
-    'transition-colors duration-300 font-medium text-gray-700 hover:text-amber-800'
+    'transition-colors duration-300 font-medium text-gray-700 hover:text-amber-800';
 
   return (
     <motion.header
@@ -29,87 +27,72 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center"
           >
             <Link to="/" className="flex items-center">
               <img
-                src={logo} // if imported from src/assets
+                src={logo}
                 alt="Ikigge Designz Logo"
                 className="h-18 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
               />
-              {/* Optional text beside logo for brand name */}
               <span className="ml-3 text-xl font-semibold text-gray-800 tracking-wide">
                 IKIGGE DESIGNZ
               </span>
             </Link>
           </motion.div>
 
-
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.to}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.07 }}
-                viewport={{ once: false }}
-              >
-                <NavLink
-                  to={item.to}
-                  end={item.to === '/'}
-                  className={({ isActive }) =>
-                    `${linkBase} ${isActive ? 'text-amber-800' : ''}`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              </motion.div>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
+          {/* Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-700 hover:text-amber-800 transition-colors duration-300"
+            className="text-gray-700 hover:text-amber-800 transition-colors duration-300 z-50"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+            {isMenuOpen ? (
+              <i className="fi fi-br-cross text-2xl" />
+            ) : (
+              <i className="fi fi-br-bars-staggered text-2xl" />
+            )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-gray-100 py-4"
-          >
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === '/'}
-                  className={({ isActive }) =>
-                    `${linkBase} ${isActive ? 'text-amber-800' : ''}`
-                  }
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </div>
-          </motion.nav>
-        )}
+        {/* Side Panel Navigation */}
+        <motion.nav
+          initial={{ x: '100%' }}
+          animate={{ x: isMenuOpen ? '0%' : '100%' }}
+          transition={{ type: 'tween' }}
+          className="fixed top-0 right-0 h-screen w-full sm:w-80 bg-white shadow-xl flex flex-col pt-24 z-40 transform"
+        >
+          <div className="flex flex-col space-y-4 px-8">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === '/'}
+                className={({ isActive }) =>
+                  `text-xl font-medium py-3 border-b border-gray-300 last:border-b-0 ${linkBase} ${
+                    isActive ? 'text-amber-800' : ''
+                  }`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+        </motion.nav>
       </div>
-    </motion.header>
-  )
-}
 
-export default Header
+      {/* Overlay to close side panel */}
+      {isMenuOpen && (
+        <div
+          onClick={() => setIsMenuOpen(false)}
+          className="fixed inset-0 z-30"
+        />
+      )}
+    </motion.header>
+  );
+};
+
+export default Header;
