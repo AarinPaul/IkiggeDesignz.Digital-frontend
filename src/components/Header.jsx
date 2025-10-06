@@ -23,14 +23,16 @@ const Header = () => {
         transition={{ duration: 0.8 }}
         className="fixed top-0 left-0 right-0 z-50 h-27 bg-[#f0f0f0] backdrop-blur-sm shadow-md"
       >
-        <div className="w-full flex justify-between items-center h-30 px-0 pr-4 sm:pr-6 lg:pr-8 mx-0">
+        {/* FIX APPLIED: Using pl-0 and ml-0 to remove any gap before the logo on the left. */}
+        <div className="w-full flex justify-between items-center h-30 **pl-0 ml-0** pr-4 sm:pr-6 lg:pr-8">
+          
           {/* Logo + Text */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center m-0 p-0 pt-2">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center m-0 p-0">
               <img
                 src={logo}
                 alt="Ikigge Designz Logo"
-                className="h-40 sm:h-40 w-35 sm:w-auto object-contain opacity-90 transition-opacity duration-300"
+                className="h-40 sm:h-40 w-26 sm:w-auto pr-0 object-contain opacity-90 transition-opacity duration-300"
               />
               <div className="ml-0 sm:ml-0 flex flex-col justify-center">
                 <span className="text-xl sm:text-2xl font-bold tracking-wide brand-text">
@@ -41,7 +43,6 @@ const Header = () => {
                 </span>
               </div>
             </Link>
-
           </motion.div>
 
           {/* Always Visible 3-dot Menu */}
@@ -59,7 +60,6 @@ const Header = () => {
         </div>
       </motion.header>
 
-
       {/* Side Panel */}
       <motion.nav
         initial={{ x: '100%' }}
@@ -75,7 +75,7 @@ const Header = () => {
               end={item.to === '/'}
               className={({ isActive }) =>
                 `text-lg py-3 border-b border-gray-300 last:border-b-0 text-white ${isActive ? 'font-bold' : ''
-                } ${item.to === '/' ? 'pt-8' : ''}` // ADDED: Conditional top padding (pt-6) for the HOME link
+                } ${item.to === '/' ? 'pt-8' : ''}`
               }
               onClick={() => setIsMenuOpen(false)}
             >
