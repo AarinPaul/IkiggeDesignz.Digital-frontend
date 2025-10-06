@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Maragsa&display=swap');
 @import "tailwindcss";
 
@@ -43,6 +44,10 @@ html, body {
 
 .active-link {
   color: #1A1A1A; /* Keeps same color as normal text */
+}
+.sub-titel{
+  color: black;
+  font-family: 'Tangerine';
 }
 
 

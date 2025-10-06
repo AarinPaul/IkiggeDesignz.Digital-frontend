@@ -32,13 +32,13 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Ikigge Designz Logo"
-                className="h-40 sm:h-40 w-26 sm:w-auto pr-0 object-contain opacity-90 transition-opacity duration-300"
+                className="h-40 sm:h-40 w-27 sm:w-auto pr-0 object-contain opacity-90 transition-opacity duration-300"
               />
               <div className="ml-0 sm:ml-0 flex flex-col justify-center">
                 <span className="text-xl sm:text-2xl font-bold tracking-wide brand-text">
                   IKIGGE DESIGNZ
                 </span>
-                <span className="text-xs sm:text-lg tracking-wide brand-text">
+                <span className="text-xs sm:text-lg tracking-wide sub-titel">
                   Creating Beauty in Every Corner
                 </span>
               </div>
