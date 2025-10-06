@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import emailjs from "@emailjs/browser"; // ✅ correct import
 import hero1 from "../assets/hero1.png";
 import hero2 from "../assets/hero2.png";
 import hero3 from "../assets/hero3.png";
@@ -32,18 +33,33 @@ const Hero = () => {
       return;
     }
 
-    const message = `My name is ${name}, my number is ${phone}.`;
-    const whatsappNumber = "7810891102";
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsappURL, "_blank");
+    // ✅ EmailJS send function using @emailjs/browser
+    emailjs
+      .send(
+        "service_2hwslfh", // your Service ID
+        "template_iw67q0f", // your Template ID
+        {
+          from_name: name,
+          phone_number: phone,
+          to_email: "subhjitmajhi463@gmail.com",
+        },
+        "2k-i_9TIaV2I6ao-M" // your Public Key
+      )
+      .then(
+        () => {
+          alert("✅ Your details have been sent successfully! We’ll contact you soon.");
+        },
+        (error) => {
+          console.error("❌ Error sending email:", error);
+          alert("❌ Failed to send details. Please try again later.");
+        }
+      );
+
     e.target.reset();
   };
 
   return (
     <section className="relative w-full h-[100vh] overflow-hidden flex flex-col">
-      {/* Background Image */}
       <motion.img
         key={currentIndex}
         src={images[currentIndex]}
@@ -53,22 +69,18 @@ const Hero = () => {
         transition={{ duration: 6, ease: "easeInOut" }}
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
-
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full h-full px-6 md:px-16 lg:px-24 gap-10">
-        {/* Left Side (Empty) */}
         <div className="flex-1"></div>
 
-        {/* Right Form */}
         <div className="flex-1 flex justify-center md:justify-end">
           <div
             className="
-              bg-white/90 backdrop-blur-md p-6 md:p-8  shadow-lg 
+              bg-white/90 backdrop-blur-md p-6 md:p-8 shadow-lg 
               w-full max-w-sm 
               mt-auto md:mt-0
+              mb-10 md:mb-0  /* 👈 Added bottom gap for mobile */
               md:absolute md:right-20 md:top-1/2 md:-translate-y-1/2
               md:z-10
             "
@@ -91,7 +103,7 @@ const Hero = () => {
               />
               <button
                 type="submit"
-                className="bg-[#588c7e] text-black font-semibold py-3 rounded-xl hover:bg-[#588c7e]-500 transition brand-text"
+                className="bg-[#588c7e] text-black font-semibold py-3 rounded-xl hover:bg-[#476f63] transition brand-text"
               >
                 Submit
               </button>
@@ -100,7 +112,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Arrows */}
       <div className="absolute inset-0 flex items-center justify-between px-4 md:px-8">
         <motion.button
           onClick={prevSlide}
@@ -110,7 +121,6 @@ const Hero = () => {
         >
           <HiChevronLeft size={24} />
         </motion.button>
-
         <motion.button
           onClick={nextSlide}
           whileHover={{ scale: 1.1 }}
