@@ -64,7 +64,7 @@ const Hero = () => {
       {/* Content */}
       <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-between px-6 lg:px-24">
         {/* Left Text */}
-        <div className="text-white max-w-xl mb-8 md:mb-0 mt-20 md:mt-0">
+        <div className="text-white max-w-xl mb-8 md:mb-0 mt-30 md:mt-0">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
             Interior Designers in{" "}
             <span className="text-yellow-400">Roorkee</span>
