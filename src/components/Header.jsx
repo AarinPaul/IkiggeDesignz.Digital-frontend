@@ -75,7 +75,7 @@ const Header = () => {
               end={item.to === '/'}
               className={({ isActive }) =>
                 `text-lg py-3 border-b border-gray-300 last:border-b-0 text-white ${isActive ? 'font-bold' : ''
-                }`
+                } ${item.to === '/' ? 'pt-8' : ''}` // ADDED: Conditional top padding (pt-6) for the HOME link
               }
               onClick={() => setIsMenuOpen(false)}
             >
