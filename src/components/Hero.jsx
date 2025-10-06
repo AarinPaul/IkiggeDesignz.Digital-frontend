@@ -66,7 +66,7 @@ const Hero = () => {
         <div className="flex-1 flex justify-center md:justify-end">
           <div
             className="
-              bg-white/90 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-lg 
+              bg-white/90 backdrop-blur-md p-6 md:p-8  shadow-lg 
               w-full max-w-sm 
               mt-auto md:mt-0
               md:absolute md:right-20 md:top-1/2 md:-translate-y-1/2
@@ -91,7 +91,7 @@ const Hero = () => {
               />
               <button
                 type="submit"
-                className="bg-yellow-400 text-black font-semibold py-3 rounded-xl hover:bg-yellow-500 transition"
+                className="bg-[#588c7e] text-black font-semibold py-3 rounded-xl hover:bg-[#588c7e]-500 transition brand-text"
               >
                 Submit
               </button>
