@@ -31,7 +31,7 @@ const Header = () => {
                 <img
                   src={logo}
                   alt="Ikigge Designz Logo"
-                  className="h-12 sm:h-16 w-auto object-contain opacity-90 transition-opacity duration-300"
+                  className="h-27 sm:h-16 w-auto object-contain opacity-90 transition-opacity duration-300"
                 />
                 <div className="ml-2 sm:ml-4 flex flex-col justify-center">
                   <span className="text-xl sm:text-2xl font-bold tracking-wide brand-text">
