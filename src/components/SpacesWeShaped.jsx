@@ -74,7 +74,7 @@ const SpacesWeShaped = () => {
           className="mb-12 flex flex-col md:flex-row justify-between items-start md:text-left"
         >
           <div>
-            <h2 className=" md:text-4xl  text-[#2D2D2D] mb-4 leading-tight sub-he">
+            <h2 className="  text-3xl md:text-4xl  text-[#2D2D2D] mb-4 leading-tight sub-he">
               Thoughtfully Designed Interiors, Built for You.
             </h2>
             <p className=" md:text-1xl text-[#2D2D2D] opacity-90 max-w-4xl thank-u">
