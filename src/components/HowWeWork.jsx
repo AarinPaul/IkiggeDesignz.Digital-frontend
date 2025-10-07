@@ -41,7 +41,7 @@ const HowWeWork = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl text-gray-800 mb-12 com-cli "
+          className="text-4xl md:text-5xl text-gray-800 mb-12 sub-he "
         >
           How it works
         </motion.h2>

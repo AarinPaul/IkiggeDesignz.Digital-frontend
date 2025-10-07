@@ -32,7 +32,7 @@ const CommercialClients = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl text-gray-800 mb-4 com-cli">
+          <h2 className="text-3xl md:text-5xl text-gray-800 mb-4 sub-he">
             Our Trusted Partner
           </h2>
         </motion.div>
