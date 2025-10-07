@@ -43,7 +43,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 5000);
+    }, 5550);
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -92,8 +92,8 @@ const Hero = () => {
         src={images[currentIndex]}
         alt="Interior Design"
         initial={{ scale: 1 }}
-        animate={{ scale: 1.05 }}
-        transition={{ duration: 6, ease: "easeInOut" }}
+        animate={{ scale: 1.5 }}
+        transition={{ duration: 6, ease: "easeIn" }}
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/40"></div>
