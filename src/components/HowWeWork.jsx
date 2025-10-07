@@ -34,20 +34,20 @@ const HowWeWork = () => {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center ">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-serif text-gray-800 mb-12"
+          className="text-4xl md:text-5xl font-serif text-gray-800 mb-12 "
         >
           How it works
         </motion.h2>
 
         {/* Steps in a row */}
-        <div className="relative flex flex-col md:flex-row justify-between items-center gap-12 md:gap-6">
+        <div className="relative flex flex-col md:flex-row justify-between items-center gap-12 md:gap-6 ">
           {steps.map((step, index) => (
             <motion.div
               key={index}
