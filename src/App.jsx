@@ -8,6 +8,7 @@ import Services from './pages/Services'
 import Projects from './pages/Projects'
 import Blog from './pages/Blog'
 import Career from "./pages/Career";
+import ThankYou from './pages/ThankYou.jsx' // ✅ New Import
 
 // ✅ Import WhatsAppButton
 import WhatsAppButton from './components/WhatsAppButton'
@@ -23,6 +24,7 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="blog" element={<Blog />} />
           <Route path="/career" element={<Career />} />
+          <Route path="thank-you" element={<ThankYou />} /> {/* ✅ New Route for submission success */}
           <Route path="*" element={<div className="p-8">Not Found</div>} />
         </Route>
       </Routes>

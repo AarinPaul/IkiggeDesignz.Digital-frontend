@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import emailjs from "@emailjs/browser"; // ✅ correct import
+import { useNavigate } from "react-router-dom"; // ✅ Necessary for redirection
+
+// ➡️ Restored REAL Imports for EmailJS
+import emailjs from "@emailjs/browser"; 
+
+// ➡️ Restored REAL Local Image Imports (These must exist in your project!)
 import hero1 from "../assets/hero1.png";
 import hero2 from "../assets/hero2.png";
 import hero3 from "../assets/hero3.png";
@@ -32,9 +36,16 @@ const slideContent = [
 ];
 
 const Hero = () => {
-  const images = [hero1, hero2, hero3, hero4];
+  const navigate = useNavigate(); 
+  
+  // ➡️ Using the imported image variables
+  const images = [hero1, hero2, hero3, hero4]; 
+  
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [formMessage, setFormMessage] = useState({ text: '', type: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Carousel logic (using images.length for loop)
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   const nextSlide = () =>
@@ -44,20 +55,25 @@ const Hero = () => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 5550);
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); 
   }, [images.length]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormMessage({ text: '', type: '' });
+    
     const name = e.target.name.value.trim();
     const phone = e.target.phone.value.trim();
 
     if (!name || !phone) {
-      alert("⚠️ Please fill out both fields!");
+      // Display error in the form instead of an alert
+      setFormMessage({ text: "⚠️ Please fill out both fields!", type: "error" });
       return;
     }
 
-    // ✅ EmailJS send function using @emailjs/browser
+    setIsSubmitting(true);
+
+    // ✅ Using the actual EmailJS send function
     emailjs
       .send(
         "service_2hwslfh", // your Service ID
@@ -71,15 +87,19 @@ const Hero = () => {
       )
       .then(
         () => {
-          alert("✅ Your details have been sent successfully! We’ll contact you soon.");
+          // ✅ Success: Navigate to the Thank You page
+          navigate('/thank-you'); 
         },
         (error) => {
           console.error("❌ Error sending email:", error);
-          alert("❌ Failed to send details. Please try again later.");
+          // ❌ Failure: Display an error message within the form
+          setFormMessage({ text: "❌ Failed to send details. Please try again later.", type: "error" });
         }
-      );
-
-    e.target.reset();
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+        e.target.reset(); // Reset form fields after attempt
+      });
   };
 
   // Access the current slide's content
@@ -87,9 +107,10 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[100vh] overflow-hidden flex flex-col">
+      {/* Background Image/Slider */}
       <motion.img
         key={currentIndex}
-        src={images[currentIndex]}
+        src={images[currentIndex]} // ➡️ Using imported image asset
         alt="Interior Design"
         initial={{ scale: 1 }}
         animate={{ scale: 1.5 }}
@@ -98,13 +119,13 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Main Content Container - ADDED md:pt-16 TO PUSH CONTENT DOWN */}
+      {/* Main Content Container */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between w-full h-full px-6 md:px-16 lg:px-24 gap-10 md:pt-80 pt-40">
         
-        {/* Text Content Area (Left Side) - ADDED md:mt-[-5vh] FOR FINE-TUNING ALIGNMENT */}
+        {/* Text Content Area (Left Side) */}
         <div className="
           flex-1 text-white max-w-lg 
-          mt-10 md:mt-[-5vh] /* Adjusted vertical margin for better centering on desktop */
+          mt-10 md:mt-[-5vh] 
           mb-auto md:mb-auto 
           text-center md:text-left 
           block
@@ -112,7 +133,7 @@ const Hero = () => {
         ">
             {/* Using motion for text transition */}
             <motion.div
-              key={currentIndex} // Key change ensures text re-renders on slide change
+              key={currentIndex} 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -120,24 +141,24 @@ const Hero = () => {
                 <h1 className="
                     text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
                     font-extrabold leading-tight mb-2 md:mb-4 
-                    text-shadow-lg
+                    text-shadow-lg sub-he
                 ">
                     {currentText.heading}
                 </h1>
                 <p className="
                     text-md sm:text-lg md:text-xl lg:text-2xl 
                     font-light mb-4 md:mb-6
-                    hidden sm:block
+                    hidden sm:block main-he
                 ">
                     {currentText.subtext}
                 </p>
-                <p className="text-sm sm:text-lg font-medium">
+                <p className="text-sm sm:text-lg font-medium thank-u">
                     {currentText.cta}
                 </p>
             </motion.div>
         </div>
 
-        {/* Original Form Area (Right Side) - Keep this structure to maintain absolute positioning */}
+        {/* Form Area (Right Side) */}
         <div className="flex-1 flex justify-center md:justify-end">
           <div
             className="
@@ -152,24 +173,46 @@ const Hero = () => {
             <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center form-bar-txt">
               Get in Touch
             </h2>
+            
+            {/* Message Display Area */}
+            {formMessage.text && (
+                <div 
+                    className={`p-3 mb-4 rounded-lg text-sm text-center font-medium ${
+                        formMessage.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
+                    }`}
+                >
+                    {formMessage.text}
+                </div>
+            )}
+
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
                 type="text"
                 name="name"
                 placeholder="Your Name"
-                className="px-4 py-3 border rounded-xl outline-none transition"
+                className="px-4 py-3 border rounded-xl outline-none transition focus:border-[#588c7e]"
+                disabled={isSubmitting}
               />
               <input
                 type="tel"
                 name="phone"
                 placeholder="Phone Number"
-                className="px-4 py-3 border rounded-xl outline-none transition"
+                className="px-4 py-3 border rounded-xl outline-none transition focus:border-[#588c7e]"
+                disabled={isSubmitting}
               />
               <button
                 type="submit"
-                className="text-lg bg-[#588c7e] text-white font-semibold py-3 rounded-xl hover:bg-[#476f63] transition form-bar-txt"
+                className="text-lg bg-[#588c7e] text-white font-semibold py-3 rounded-xl hover:bg-[#476f63] transition form-bar-txt disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center"
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? (
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                ) : (
+                    'Submit'
+                )}
               </button>
             </form>
           </div>
