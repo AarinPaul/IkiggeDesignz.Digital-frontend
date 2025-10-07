@@ -82,10 +82,10 @@ const Hero = () => {
               mt-auto md:mt-0
               mb-10 md:mb-0  /* 👈 Added bottom gap for mobile */
               md:absolute md:right-20 md:top-1/2 md:-translate-y-1/2
-              md:z-10
+              md:z-10 rounded-xl
             "
           >
-            <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center form-bar-txt">
               Get in Touch
             </h2>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -93,42 +93,23 @@ const Hero = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
-                className="px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                className="px-4 py-3 border rounded-xl outline-none transition"
               />
               <input
                 type="tel"
                 name="phone"
                 placeholder="Phone Number"
-                className="px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-yellow-400 transition"
+                className="px-4 py-3 border rounded-xl outline-none transition"
               />
               <button
                 type="submit"
-                className="bg-[#588c7e] text-black font-semibold py-3 rounded-xl hover:bg-[#476f63] transition brand-text"
+                className="text-lg bg-[#588c7e] text-white font-semibold py-3 rounded-xl hover:bg-[#476f63] transition form-bar-txt"
               >
                 Submit
               </button>
             </form>
           </div>
         </div>
-      </div>
-
-      <div className="absolute inset-0 flex items-center justify-between px-4 md:px-8">
-        <motion.button
-          onClick={prevSlide}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
-        >
-          <HiChevronLeft size={24} />
-        </motion.button>
-        <motion.button
-          onClick={nextSlide}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
-        >
-          <HiChevronRight size={24} />
-        </motion.button>
       </div>
     </section>
   );
