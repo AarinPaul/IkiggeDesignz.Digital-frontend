@@ -1,5 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import twoBhkImage from '../assets/2bhk.png';
+import threeBhkImage from '../assets/3bhk.png';
+import fourBhkImage from '../assets/4bhk.png';
+import kitchen from '../assets/kitchen.png';
+import bedroom from '../assets/bedroom.png';
+import livingroom from '../assets/livingroom.png';
 
 // Inline SVG components
 const ArrowLeft = ({ className }) => (
@@ -22,29 +28,34 @@ const ArrowRight = ({ className }) => (
 const SpacesWeShaped = () => {
   const projects = [
     {
-      type: '1BHK',
-      image: 'https://images.unsplash.com/photo-1564078516393-cf04bd966897?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      price: 'Starting at 2.85L*'
-    },
-    {
       type: '2BHK',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-      price: 'Starting at 3.57L*'
+      image: twoBhkImage,
+      price: 'Starting at 3.5L*'
     },
     {
       type: '3BHK',
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-      price: 'Starting at 4.23L*'
+      image: threeBhkImage,
+      price: 'Starting at 5L*'
     },
     {
       type: '4BHK',
-      image: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80',
-      price: 'Starting at 4.81L*'
+      image: fourBhkImage,
+      price: 'Starting at 8L*'
     },
     {
-      type: '5BHK',
-      image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      price: 'Starting at 5.21L*'
+      type: 'Modular Kitchen',
+      image: kitchen,
+      price: 'Starting at 1.2L*'
+    },
+    {
+      type: 'Bedroom',
+      image: bedroom,
+      price: 'Starting at 1.5L*'
+    },
+    {
+      type: 'Living Room',
+      image: livingroom,
+      price: 'Starting at 0.8L*'
     }
   ]
 
@@ -63,7 +74,7 @@ const SpacesWeShaped = () => {
 
   return (
     <section className="pt-12 pb-12 bg-[#FCFBF9] relative">
-      
+
       {/* 1. TEXT CONTAINER: Retains padding for aligned text */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -82,10 +93,10 @@ const SpacesWeShaped = () => {
             </p>
           </div>
         </motion.div>
-        
+
         {/* 2. CAROUSEL CONTAINER: Now uses padding to align content (NO NEGATIVE MARGIN) */}
-        <div className="relative"> 
-          
+        <div className="relative">
+
           {/* Left Arrow: Positioned absolutely *within* the scrollable track's visual space */}
           <button
             onClick={() => scroll('left')}
@@ -97,7 +108,7 @@ const SpacesWeShaped = () => {
           {/* Carousel Track: The scrollable area */}
           <div
             ref={carouselRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-2 pl-10 sm:pl-12 lg:pl-16 pr-10 sm:pr-12 lg:pr-16" 
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-2 pl-10 sm:pl-12 lg:pl-16 pr-10 sm:pr-12 lg:pr-16"
           >
             {projects.map((project, index) => (
               <motion.div
@@ -106,24 +117,24 @@ const SpacesWeShaped = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative flex-shrink-0 w-[75%] sm:w-[45%] lg:w-[28%] snap-start rounded-2xl shadow-xl overflow-hidden cursor-pointer" 
+                className="group relative flex-shrink-0 w-[75%] sm:w-[45%] lg:w-[28%] snap-start rounded-2xl shadow-xl overflow-hidden cursor-pointer"
               >
                 <img
                   src={project.image}
                   alt={`${project.type} interior design`}
-                  className="w-full h-[28rem] object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  className="w-full h-[28rem] object-cover transition-transform duration-500"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
 
-                {/* FIX: Adjusted responsive text size and bottom/right positioning for the price button */}
-                <div className="absolute bottom-2 right-2 bg-[#C69749] text-[#2D2D2D] px-2 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-xl form-bar-txt">
+                {/* PRICE TAG - moved to top-left with new colors */}
+                <div className="absolute top-4 left-2 bg-[#34584e] text-white px-2 py-1 rounded-sm text-xs sm:text-sm font-semibold shadow-xl form-bar-txt">
                   {project.price}
                 </div>
 
-                {/* FIX: Adjusted responsive text size and bottom/left positioning for the type text */}
+                {/* TYPE TEXT (unchanged) */}
                 <div className="absolute bottom-2 left-2 text-white">
-                  <h3 className="text-xl sm:text-xl tracking-wide  form-bar-txt">{project.type}</h3>
+                  <h3 className="text-xl sm:text-xl tracking-wide form-bar-txt">{project.type}</h3>
                 </div>
               </motion.div>
             ))}

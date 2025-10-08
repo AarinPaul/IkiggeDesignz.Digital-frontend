@@ -59,7 +59,7 @@ const HowWeWork = () => {
             >
               {/* Circle Icon */}
               <div className="w-20 h-20 rounded-full bg-amber-100 flex items-center justify-center shadow-md relative z-10">
-                <step.icon size={30} className="text-amber-800" />
+                <step.icon size={30} className="text-[#2f544a]" />
               </div>
 
               {/* Title */}
@@ -87,7 +87,7 @@ const HowWeWork = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-amber-800 text-white px-8 py-4 rounded-4xl text-lg font-medium hover:bg-amber-900 transition-colors duration-300"
+            className="bg-[#588c7e] text-white px-8 py-4 rounded-4xl text-lg font-medium hover:bg-[#34584e] transition-colors duration-300"
           >
             Book a Consultation
           </motion.button>
