@@ -113,16 +113,17 @@ const SpacesWeShaped = () => {
             {projects.map((project, index) => (
               <motion.div
                 key={project.type}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative flex-shrink-0 w-[75%] sm:w-[45%] lg:w-[28%] snap-start rounded-2xl shadow-xl overflow-hidden cursor-pointer"
+                className="group relative flex-shrink-0 w-[120%] sm:w-[32%] lg:w-[28%] snap-start rounded-2xl shadow-xl overflow-hidden cursor-pointer bg-[#FCFBF9]"
               >
+
                 <img
                   src={project.image}
                   alt={`${project.type} interior design`}
-                  className="w-full h-[28rem] object-cover transition-transform duration-500"
+                  className="w-full h-[25rem] object-cover transition-transform duration-500"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>

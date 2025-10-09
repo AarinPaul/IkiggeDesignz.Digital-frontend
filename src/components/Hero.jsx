@@ -170,8 +170,8 @@ const Hero = () => {
               md:z-10 rounded-xl
             "
           >
-            <h2 className="text-2xl font-semibold mb-4 text-gray-800 text-center form-bar-txt">
-              Get in Touch
+            <h2 className="text-xl font-semibold mb-4 text-gray-800 text-center form-bar-txt">
+              Bring your Dream space to life.
             </h2>
             
             {/* Message Display Area */}
@@ -211,7 +211,7 @@ const Hero = () => {
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                 ) : (
-                    'Submit'
+                    'Book a free consultation'
                 )}
               </button>
             </form>

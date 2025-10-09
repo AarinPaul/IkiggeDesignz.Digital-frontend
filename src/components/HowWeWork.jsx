@@ -58,15 +58,15 @@ const HowWeWork = () => {
               className="flex flex-col items-center text-center relative"
             >
               {/* Circle Icon */}
-              <div className="w-20 h-20 rounded-full bg-amber-100 flex items-center justify-center shadow-md relative z-10">
-                <step.icon size={30} className="text-[#2f544a]" />
+              <div className="w-20 h-20 rounded-full bg-[#2f544a] flex items-center justify-center shadow-md relative z-10">
+                <step.icon size={30} className="text-white" />
               </div>
 
               {/* Title */}
-              <h3 className="mt-4 text-lg font-semibold text-gray-800">
+              <h3 className="mt-4 text-lg font-semibold text-gray-800 form-bar-txt">
                 {step.title}
               </h3>
-              <p className="text-sm text-gray-600">{step.description}</p>
+              <p className="text-sm text-gray-600 thank-u">{step.description}</p>
 
               {/* Connector Line */}
               {index < steps.length - 1 && (
@@ -76,22 +76,18 @@ const HowWeWork = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }} viewport={{ once: true }} className="mt-16" >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="bg-[#588c7e] text-white px-8 py-4 rounded-4xl text-lg font-medium hover:bg-[#34584e] transition-colors duration-300"
           >
             Book a Consultation
           </motion.button>
         </motion.div>
+
+
       </div>
     </section>
   );
