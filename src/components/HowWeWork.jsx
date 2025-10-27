@@ -83,7 +83,7 @@ const HowWeWork = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="bg-[#588c7e] text-white px-8 py-4 rounded-4xl text-lg font-medium hover:bg-[#34584e] transition-colors duration-300"
           >
-            Book a Consultation
+            Book a  Free Consultation
           </motion.button>
         </motion.div>
 

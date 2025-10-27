@@ -37,7 +37,7 @@ const Footer = () => {
     {
       city: 'Bangalore',
       address: '443 , 9BM, HRBR Layout 1st Block, HRBR Layout, Kalyan Nagar, Bengaluru, Karnataka 560043',
-      phone: '+91 9606177513',
+      phone: '+91 9606177513 / 9071211169',
       email: 'babu@ikigge-designz.com',
     },
   ];

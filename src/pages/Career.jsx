@@ -16,15 +16,39 @@ const Career = () => {
           file: null,
      });
 
+     // --- THIS IS THE UPDATED FUNCTION ---
      const handleChange = (e) => {
           const { name, value, files } = e.target;
+
           if (name === "file") {
                setFormData({ ...formData, file: files[0] });
                setFileName(files[0]?.name || "No file chosen");
           } else {
-               setFormData({ ...formData, [name]: value });
+               // Validation Logic
+               let processedValue = value;
+
+               switch (name) {
+                    case "fullName":
+                         // Remove any characters that are digits (0-9)
+                         processedValue = value.replace(/\d/g, "");
+                         break;
+                    case "phone":
+                         // Remove any characters that are NOT digits
+                         processedValue = value.replace(/\D/g, "");
+                         break;
+                    case "email":
+                         // Remove any whitespace (spaces)
+                         processedValue = value.replace(/\s/g, "");
+                         break;
+                    default:
+                         // No processing for other fields
+                         processedValue = value;
+               }
+
+               setFormData({ ...formData, [name]: processedValue });
           }
      };
+     // -------------------------------------
 
      const handleSubmit = (e) => {
           e.preventDefault();
@@ -153,7 +177,7 @@ const Career = () => {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        placeholder="Email"
+                                        placeholder="abc123@gmail.com"
                                         required
                                         className="w-full border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                    />
