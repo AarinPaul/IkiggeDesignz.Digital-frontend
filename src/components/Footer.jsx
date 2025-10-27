@@ -36,7 +36,7 @@ const Footer = () => {
   const contactInfo = [
     {
       city: 'Bangalore',
-      address: 'Door No-18, 3rd B Cross, Domlur II Stage, Bangalore 560071',
+      address: '443 , 9BM, HRBR Layout 1st Block, HRBR Layout, Kalyan Nagar, Bengaluru, Karnataka 560043',
       phone: '+91 9606177513',
       email: 'babu@ikigge-designz.com',
     },
