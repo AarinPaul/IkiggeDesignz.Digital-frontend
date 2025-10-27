@@ -1,7 +1,8 @@
 import React from 'react';
+import Career from '../pages/Career';
 import { motion } from 'framer-motion';
-// If you are using React Router, you need to import Link:
-// import { Link } from 'react-router-dom'; 
+// 1. UNCOMMENTED THIS IMPORT
+import { Link } from 'react-router-dom'; 
 
 // Adjusted icons: Replaced FaYoutube with FaLinkedinIn
 import { 
@@ -12,23 +13,23 @@ import {
   FaPhone,       
   FaEnvelopeOpenText, 
 } from 'react-icons/fa6'; 
-import Career from '../pages/Career';
+
 
 const Footer = () => {
   // --- Data ---
   const aboutUsData = {
     title: 'About Us',
     text:'Ikigge Designz crafts personalized, harmonious interiors inspired by ikigai and hygge to reflect your unique style and purpose.',
-    // CHANGED TO ROUTE PATH: The link will now point to your About page route
     moreLink: '/about', 
   };
 
+  // 2. UPDATED THIS OBJECT
   const quickLinksData = {
     title: 'Quick Links',
     links: [
-      { name: 'Home', href: '#' },
-      { name: 'Services', href: '#' },
-      { name: 'Career', href:'#' },
+      { name: 'Home', href: '/' },         // Changed from '#'
+      { name: 'Services', href: '/services' }, // Changed from '#'
+      { name: 'Career', href: '/career' },   // Changed from '#'
     ],
   };
 
@@ -67,13 +68,14 @@ const Footer = () => {
               <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                 {aboutUsData.text}
               </p>
-              {/* CHANGE: Replace <a> with <Link> (or keep <a> if you don't use React Router) */}
-              <a 
-                href={aboutUsData.moreLink} // The link will navigate to /about
+              
+              {/* 3. REPLACED <a> WITH <Link> */}
+              <Link 
+                to={aboutUsData.moreLink} // Use 'to' instead of 'href'
                 className="text-white font-medium hover:text-amber-500 transition-colors duration-300 border-b border-transparent hover:border-amber-500 pb-1"
               >
                 More About Us
-              </a>
+              </Link>
             </motion.div>
           </div>
 
@@ -97,13 +99,14 @@ const Footer = () => {
                   transition={{ duration: 0.8, delay: 0.1 + index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  {/* Internal links for quick links do not need target="_blank" */}
-                  <a
-                    href={link.href}
+                  
+                  {/* 3. REPLACED <a> WITH <Link> */}
+                  <Link
+                    to={link.href} // Use 'to' instead of 'href'
                     className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -126,13 +129,13 @@ const Footer = () => {
                   <p>{contactInfo[0].address}</p>
                 </div>
                 
-                {/* Phone */}
+                {/* Phone (Keep as <a> for tel:) */}
                 <div className="flex items-center text-gray-400 mb-2 text-sm">
                   <FaPhone className="text-amber-500 mr-2 flex-shrink-0" size={16} />
                   <a href={`tel:${contactInfo[0].phone}`} className="hover:text-white">{contactInfo[0].phone}</a>
                 </div>
                 
-                {/* Email - Now fully visible */}
+                {/* Email (Keep as <a> for mailto:) */}
                 <div className="flex items-center text-gray-400 text-sm">
                   <FaEnvelopeOpenText className="text-amber-500 mr-2 flex-shrink-0" size={16} />
                   <a href={`mailto:${contactInfo[0].email}`} className="hover:text-white">{contactInfo[0].email}</a>
@@ -161,7 +164,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             
-            {/* Social Icons (Facebook, Instagram, LinkedIn) */}
+            {/* Social Icons (Keep as <a> for external links) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -173,7 +176,6 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={social.href}
-                  // These external links need the new tab/security attributes
                   target="_blank" 
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}

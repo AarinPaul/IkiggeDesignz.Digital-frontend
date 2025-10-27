@@ -187,9 +187,12 @@ const Career = () => {
                                         className="w-full border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                    >
                                         <option value="">Applying For</option>
-                                        <option>Designer</option>
-                                        <option>Developer</option>
-                                        <option>Manager</option>
+                                        <option>Sales Manager</option>
+                                        <option>Project Manager</option>
+                                        <option>Interior Designer</option>
+                                        <option>Draftsman</option>
+                                        <option>Pre-Sales</option>
+                                        <option>3D Visualizer</option>
                                    </select>
                               </div>
                          </div>

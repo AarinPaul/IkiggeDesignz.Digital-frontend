@@ -12,10 +12,12 @@ import ThankYou from './pages/ThankYou.jsx' // ✅ New Import
 
 // ✅ Import WhatsAppButton
 import WhatsAppButton from './components/WhatsAppButton'
+import ScrollToTop from './components/ScrollToTop.js'
 
 function App() {
   return (
     <>
+    <ScrollToTop/>
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />                 {/* "/" */}
