@@ -12,12 +12,13 @@ import {
   FaPhone,       
   FaEnvelopeOpenText, 
 } from 'react-icons/fa6'; 
+import Career from '../pages/Career';
 
 const Footer = () => {
   // --- Data ---
   const aboutUsData = {
     title: 'About Us',
-    text: 'As one of the fastest growing interior execution companie Bangalore Ikigge Design commits to delivering high-quality results on time. Our core focus is aligning every project with the clients budget and specific needs',
+    text:'Ikigge Designz crafts personalized, harmonious interiors inspired by ikigai and hygge to reflect your unique style and purpose.',
     // CHANGED TO ROUTE PATH: The link will now point to your About page route
     moreLink: '/about', 
   };
@@ -25,10 +26,9 @@ const Footer = () => {
   const quickLinksData = {
     title: 'Quick Links',
     links: [
-      { name: 'Client Testimonials', href: '#' },
-      { name: 'FAQ', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Blog', href: '#' },
+      { name: 'Home', href: '#' },
+      { name: 'Services', href: '#' },
+      { name: 'Career', href:'#' },
     ],
   };
 
