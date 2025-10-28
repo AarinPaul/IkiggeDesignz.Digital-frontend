@@ -12,7 +12,7 @@ const HowWeWork = () => {
     },
     {
       icon: FaRuler,
-      title: "(5% payment) Book project",
+      title: "(10% payment) Book project",
       description: "Confirm your booking & design brief",
     },
     {

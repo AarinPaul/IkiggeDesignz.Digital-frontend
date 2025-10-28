@@ -166,6 +166,7 @@ const Career = () => {
                                         value={formData.phone}
                                         onChange={handleChange}
                                         placeholder="Number"
+                                        maxLength="10"
                                         required
                                         className="w-full border p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                    />
