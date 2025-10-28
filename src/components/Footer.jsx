@@ -172,7 +172,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="text-gray-400 text-sm"
             >
-              © 2025 Ikigee Designz Pvt. Ltd.
+              © IKIGGE DESIGNZ PRIVATE LIMITED
             </motion.p>
           </div>
         </div>
