@@ -8,13 +8,13 @@ import {
   FaLocationDot,
   FaPhone,
   FaEnvelopeOpenText,
-  FaAngleRight, // 👈 Added for quick link arrow
+  FaAngleRight,
 } from 'react-icons/fa6';
 
 const Footer = () => {
   const aboutUsData = {
     title: 'About Us',
-    text: 'Ikigge Designz crafts personalized, harmonious interiors inspired by ikigai and hygge to reflect your unique style and purpose.',
+    text: 'IKIGGE DESIGNZ crafts personalized, harmonious interiors inspired by ikigai and hygge to reflect your unique style and purpose.',
     moreLink: '/about',
   };
 
@@ -31,7 +31,8 @@ const Footer = () => {
     {
       city: 'Bangalore',
       address: '443 , 9BM, HRBR Layout 1st Block, HRBR Layout, Kalyan Nagar, Bengaluru, Karnataka 560043',
-      phone: '+91 9606177513 / 9071211169',
+      phone: '+91 9606177513',
+      phone1: '+91 9071211169',
       email: 'babu@ikigge-designz.com',
     },
   ];
@@ -91,7 +92,7 @@ const Footer = () => {
                     to={link.href}
                     className="flex items-center text-gray-400 hover:text-white transition-colors duration-300 text-sm"
                   >
-                    <FaAngleRight className="text-amber-500 mr-2" /> {/* 👈 Arrow Icon Added */}
+                    <FaAngleRight className="text-amber-500 mr-2" />
                     {link.name}
                   </Link>
                 </motion.li>
@@ -113,10 +114,21 @@ const Footer = () => {
                 <FaLocationDot className="text-amber-500 mt-1 mr-2 flex-shrink-0" size={16} />
                 <p>{contactInfo[0].address}</p>
               </div>
-              <div className="flex items-center text-gray-400 mb-2 text-sm">
-                <FaPhone className="text-amber-500 mr-2 flex-shrink-0" size={16} />
-                <a href={`tel:${contactInfo[0].phone}`} className="hover:text-white">{contactInfo[0].phone}</a>
+
+              {/* ✅ Both Phone Numbers */}
+              <div className="flex flex-col text-gray-400 mb-2 text-sm space-y-2">
+                <div className="flex items-center">
+                  <FaPhone className="text-amber-500 mr-2 flex-shrink-0" size={16} />
+                  <a href={`tel:${contactInfo[0].phone}`} className="hover:text-white">{contactInfo[0].phone}</a>
+                </div>
+                {contactInfo[0].phone1 && (
+                  <div className="flex items-center mt-1">
+                    <FaPhone className="text-amber-500 mr-2 flex-shrink-0" size={16} />
+                    <a href={`tel:${contactInfo[0].phone1}`} className="hover:text-white">{contactInfo[0].phone1}</a>
+                  </div>
+                )}
               </div>
+
               <div className="flex items-center text-gray-400 text-sm">
                 <FaEnvelopeOpenText className="text-amber-500 mr-2 flex-shrink-0" size={16} />
                 <a href={`mailto:${contactInfo[0].email}`} className="hover:text-white">{contactInfo[0].email}</a>
